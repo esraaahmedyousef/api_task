@@ -1,6 +1,9 @@
 import 'package:api_task/InfoCard.dart';
+import 'package:api_task/medicalcard.dart';
+import 'package:api_task/luggagecard.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+
 class RequestScreen extends StatefulWidget {
   @override
   _RequestScreenState createState() => _RequestScreenState();
@@ -37,28 +40,73 @@ class _RequestScreenState extends State<RequestScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:SafeArea(
-          child:ListView.builder(
-              itemCount: luggage.length,
-              itemBuilder: (context, index) {
-                return Container(
-                    height: MediaQuery.of(context).size.height*0.3,
-                    width:MediaQuery.of(context).size.width,
-                    child: InfoCard(
-                      name: name,
+          child:Column(
+            children: [
+              Container(
+                    height: MediaQuery.of(context).size.height*0.15,
+                     width:MediaQuery.of(context).size.width,
+                 child: InfoCard(
+                     name: name,
                       age: age,
-                      country: country,
-                      home_country: home_country,
-                      nameL: luggage[index]['name'],
-                      brand: luggage[index]['brand'],
-                      categoryL:luggage[index]['category'],
-                      nameM: medicals[index]['name'],
-                      price: medicals[index]['price'],
-                      categoryM: medicals[index]['category'],
-                    ),
-                );
-              }
+                    country: country,
+                   home_country: home_country,
+            ),
+            ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height*0.1,
+                width:MediaQuery.of(context).size.width,
+                child:Center(child:Text('luggage', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.red),),),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height*0.3,
+                width:MediaQuery.of(context).size.width,
+                child:ListView.builder(
+                    itemCount: luggage.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child:SizedBox(
+                          height:MediaQuery.of(context).size.height*0.1 ,
+                          child:  LuggageCard(
+                            nameL: luggage[index]['name'],
+                            brand: luggage[index]['brand'],
+                            categoryL:luggage[index]['category'],
+                          ),
+                        )
+                      );
+                    }
 
-          )
+                ) ,
+              ),
+
+              SizedBox(
+                height: MediaQuery.of(context).size.height*0.1,
+                width:MediaQuery.of(context).size.width,
+                child:Center(child:Text('Medical', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.red),),),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height*0.3,
+                width:MediaQuery.of(context).size.width,
+                child: ListView.builder(
+                    itemCount: medicals.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        height: MediaQuery.of(context).size.height*0.1,
+                        width:MediaQuery.of(context).size.width,
+                        child: MedicalCard(
+                          nameM: medicals[index]['name'],
+                          price: medicals[index]['price'],
+                          categoryM: medicals[index]['category'],
+                        ),
+                      );
+                    }
+
+                ),
+              ),
+
+
+            ],
+          ),
         ),
       );
   }

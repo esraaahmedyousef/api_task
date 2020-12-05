@@ -4,14 +4,8 @@ class InfoCard extends StatefulWidget {
   int age;
   String country;
   String home_country;
-  String nameL;
-  String brand;
-  String categoryL;
-  String nameM;
-  int price;
-  List categoryM=List();
 
-  InfoCard({this.name,this.age,this.country,this.home_country,this.nameL,this.brand,this.categoryL,this.nameM,this.price,this.categoryM});
+  InfoCard({this.name,this.age,this.country,this.home_country});
   @override
   _InfoCardState createState() => _InfoCardState();
 }
@@ -27,18 +21,27 @@ class _InfoCardState extends State<InfoCard> {
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Name: ${widget.name}'),
-              Text('Age: ${widget.age}'),
-              Text('Country: ${widget.country}'),
-              Text('Home Country: ${widget.home_country}'),
-              Center(child:Text('luggage', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.red),),),
-              Text('${widget.nameL}'),
-              Text('${widget.brand}'),
-              Text('${widget.categoryL}'),
-              Center(child:Text('medicals', style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.red),),),
-              Text('${widget.nameM}'),
-              Text('${widget.price}'),
-              Text('${widget.categoryM}'),
+              Row(
+                children: [Text('Name: ',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                  Text('${widget.name}',style: TextStyle(fontSize: 20)),
+                ],
+              ),
+              Row(
+                children: [Text('Age: ',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                  Text('${widget.age}',style: TextStyle(fontSize: 20)),
+                ],
+              ),
+              Row(
+                children: [Text('Country: ',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                  Text('${widget.country}',style: TextStyle(fontSize: 20)),
+                ],
+              ),
+              Row(
+                children: [Text('Home Country: ',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                  Text('${widget.home_country}',style: TextStyle(fontSize: 20)),
+                ],
+              ),
+
             ],
           ),
         ),
