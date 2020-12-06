@@ -33,7 +33,7 @@ class _MedicalCardState extends State<MedicalCard> {
               ),
               Row(
                 children: [Text('Category: ',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-                  Text('${widget.categoryM}' ,style: TextStyle(fontSize: 20),),
+                  Text('${widget.categoryM.join(',')}' ,style: TextStyle(fontSize: 20),),
                 ],
               ),
 

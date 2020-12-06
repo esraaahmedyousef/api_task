@@ -96,7 +96,7 @@ class _RequestScreenState extends State<RequestScreen> {
                         child: MedicalCard(
                           nameM: medicals[index]['name'],
                           price: medicals[index]['price'],
-                          categoryM: medicals[index]['category'],
+                          categoryM:medicals[index]['category'],
                         ),
                       );
                     }
